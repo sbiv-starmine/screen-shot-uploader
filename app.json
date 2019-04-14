@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "STARMINE-UPLOADER",
+    "name": "STARMINE",
     "slug": "screen-shot-uploader",
     "privacy": "public",
     "sdkVersion": "32.0.0",
@@ -23,7 +23,8 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "jp.starmine.starmine"
     }
   }
 }
