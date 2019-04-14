@@ -1,6 +1,15 @@
 import React from 'react';
 import {
-  ActivityIndicator, Modal, StyleSheet, View, Text, TextInput, TouchableHighlight, TouchableOpacity, AsyncStorage, KeyboardAvoidingView,
+  ActivityIndicator,
+  Modal,
+  StyleSheet,
+  View,
+  Text,
+  TextInput,
+  TouchableHighlight,
+  TouchableOpacity,
+  AsyncStorage,
+  KeyboardAvoidingView,
 } from 'react-native';
 import { SecureStore } from 'expo';
 import firebase from 'firebase';
