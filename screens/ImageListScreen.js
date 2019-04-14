@@ -1,7 +1,6 @@
 import React from 'react';
 import { View, FlatList, Image, StyleSheet, Dimensions } from 'react-native';
 import firebase from 'firebase';
-// import CircleButton from '../components/CircleButton';
 
 const { height, width } = Dimensions.get('window')
 class ImageListScreen extends React.Component {
@@ -53,8 +52,6 @@ class ImageListScreen extends React.Component {
                   borderWidth: 1, borderColor: '#dddddd'
                 }}
               />
-
-
             </View>
           )}
         />
