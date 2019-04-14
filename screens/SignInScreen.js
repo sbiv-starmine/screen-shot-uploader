@@ -13,6 +13,7 @@ import {
 } from 'react-native';
 import { SecureStore } from 'expo';
 import firebase from 'firebase';
+import LoadingModal from '../components/LoadingModal';
 
 class SignInScreen extends React.Component {
   static navigationOptions = {
@@ -22,8 +23,24 @@ class SignInScreen extends React.Component {
   state = {
     email: '',
     password: '',
-    isLoading: false,
+    isLoading: true,
     msg: null,
+  }
+
+  async componentDidMount() { // await使用する場合asyncが必要
+    const email = await SecureStore.getItemAsync('email'); // awaitで簡単にかける
+    const password = await SecureStore.getItemAsync('password');
+    if (!email || !password) {
+      this.setState({ isLoading: false });
+    }
+    firebase.auth().signInWithEmailAndPassword(email, password)
+      .then(() => {
+        this.setState({ isLoading: false });
+        this.props.navigation.navigate('App');
+      })
+      .catch(() => {
+        this.setState({ isLoading: false });
+      });
   }
 
   _signInAsync = async () => {
@@ -36,7 +53,7 @@ class SignInScreen extends React.Component {
     firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
       .then(() => {
         SecureStore.setItemAsync('email', this.state.email);
-        // SecureStore.setItemAsync('password', this.state.password);
+        SecureStore.setItemAsync('password', this.state.password);
         this._signInAsync();
       })
       .catch((error) => {
@@ -48,14 +65,7 @@ class SignInScreen extends React.Component {
   render() {
     return (
       <KeyboardAvoidingView style={styles.container} behavior='padding' keyboardVerticalOffset={80}>
-        <Modal
-          visible={this.state.isLoading}
-          animationType={'none'}
-        >
-          <View style={styles.modalContainer}>
-            <ActivityIndicator size="large" />
-          </View>
-        </Modal>
+        <LoadingModal isLoading={this.state.isLoading} />
         <View style={styles.titleContainer}>
           <Text style={styles.title}>ログイン</Text>
           <Text style={styles.msg}>{this.state.msg}</Text>
@@ -103,12 +113,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: '#fff',
-  },
-  modalContainer: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: 'rgba(255,255,255,0.9)',
   },
   titleContainer: {
     alignItems: 'center',

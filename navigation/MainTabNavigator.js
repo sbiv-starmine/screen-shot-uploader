@@ -4,11 +4,12 @@ import { createStackNavigator, createBottomTabNavigator } from 'react-navigation
 
 import TabBarIcon from '../components/TabBarIcon';
 import HomeScreen from '../screens/HomeScreen';
-// import LinksScreen from '../screens/LinksScreen';
 import SettingsScreen from '../screens/SettingsScreen';
+import AddImageScreen from '../screens/AddImageScreen';
+import ImageListScreen from '../screens/ImageListScreen';
 
 const HomeStack = createStackNavigator({
-  Home: HomeScreen,
+  Home: ImageListScreen,
 });
 
 HomeStack.navigationOptions = {
@@ -17,29 +18,25 @@ HomeStack.navigationOptions = {
     <TabBarIcon
       focused={focused}
       name={
-        Platform.OS === 'ios'
-          ? `ios-information-circle${focused ? '' : '-outline'}`
-          : 'md-information-circle'
+        Platform.OS === 'ios' ? 'ios-home' : 'md-home'
       }
     />
   ),
 };
 
-/*
-const LinksStack = createStackNavigator({
-  Links: LinksScreen,
+const AddStack = createStackNavigator({
+  AddImage: AddImageScreen,
 });
 
-LinksStack.navigationOptions = {
-  tabBarLabel: 'Links',
+AddStack.navigationOptions = {
+  tabBarLabel: 'Add',
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
-      name={Platform.OS === 'ios' ? 'ios-link' : 'md-link'}
+      name={Platform.OS === 'ios' ? 'ios-add-circle' : 'md-add-circle'}
     />
   ),
 };
-*/
 
 const SettingsStack = createStackNavigator({
   Settings: SettingsScreen,
@@ -57,6 +54,6 @@ SettingsStack.navigationOptions = {
 
 export default createBottomTabNavigator({
   HomeStack,
-  // LinksStack,
+  AddStack,
   SettingsStack,
 });

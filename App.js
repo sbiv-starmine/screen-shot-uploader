@@ -6,6 +6,7 @@ import AppNavigator from './navigation/AppNavigator';
 import firebase from 'firebase';
 import ApiKeys from './constants/ApiKeys';
 
+require("firebase/firestore");
 firebase.initializeApp(ApiKeys.FirebaseConfig);
 export default class App extends React.Component {
   state = {
@@ -42,7 +43,7 @@ export default class App extends React.Component {
         ...Icon.Ionicons.font,
         // We include SpaceMono because we use it in HomeScreen.js. Feel free
         // to remove this if you are not using it in your app
-        // 'space-mono': require('./assets/fonts/SpaceMono-Regular.ttf'),
+        'FontAwesome': require('./assets/fonts/fa-solid-900.ttf'),
       }),
     ]);
   };

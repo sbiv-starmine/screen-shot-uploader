@@ -14,6 +14,7 @@ import {
 import { SecureStore } from 'expo';
 import firebase from 'firebase';
 // import { StackActions, NavigationActions } from 'react-navigation';
+import LoadingModal from '../components/LoadingModal';
 
 class SignupScreen extends React.Component {
   static navigationOptions = {
@@ -37,6 +38,7 @@ class SignupScreen extends React.Component {
     firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password)
       .then((user) => {
         SecureStore.setItemAsync('email', this.state.email);
+        SecureStore.setItemAsync('password', this.state.password);
         this._signUpAsync();
       })
       .catch((error) => {
@@ -48,14 +50,7 @@ class SignupScreen extends React.Component {
   render() {
     return (
       <KeyboardAvoidingView style={styles.container} behavior='padding' keyboardVerticalOffset={80}>
-        <Modal
-          visible={this.state.isLoading}
-          animationType={'none'}
-        >
-          <View style={styles.modalContainer}>
-            <ActivityIndicator size="large" />
-          </View>
-        </Modal>
+        <LoadingModal isLoading={this.state.isLoading} />
         <View style={styles.titleContainer}>
           <Text style={styles.title}>
             登録する
@@ -106,12 +101,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: '#fff',
-  },
-  modalContainer: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: 'rgba(255,255,255,0.9)',
   },
   titleContainer: {
     alignItems: 'center',

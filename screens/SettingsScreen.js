@@ -1,5 +1,6 @@
 import React from 'react';
 import { AsyncStorage, Button, StyleSheet, View, } from 'react-native';
+import { SecureStore } from 'expo';
 
 export default class SettingsScreen extends React.Component {
   static navigationOptions = {
@@ -8,6 +9,7 @@ export default class SettingsScreen extends React.Component {
 
   _signOutAsync = async () => {
     // await AsyncStorage.clear();
+    await SecureStore.deleteItemAsync('password');
     await AsyncStorage.removeItem('userToken');
     this.props.navigation.navigate('Auth');
   };
