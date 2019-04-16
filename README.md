@@ -5,7 +5,7 @@
 ### Firebase configuration
 Fill ```ApiKeys.js```.
 ```bash
-mv ApiKeys.sample.js ApiKeys.js
+$ mv ApiKeys.sample.js ApiKeys.js
 ```
 
 ### Running the Expo CLI server
