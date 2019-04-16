@@ -6,7 +6,7 @@
 ```bash
 mv ApiKeys.sample.js ApiKeys.js
 ```
-ApiKeys.jsを埋めてください。
+ApiKeys.jsを埋める。
 
 ### 実行
 ```bash
@@ -18,4 +18,4 @@ $ npm start
 - React Native Expo  
 - Firebase  
 
-詳細なパッケージはpackage.jsonに書かれている
+詳細なパッケージはpackage.jsonに書かれている。
