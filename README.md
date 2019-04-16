@@ -1,21 +1,24 @@
 # screen-shot-uploader
 
-## 始め方
+## Getting Started
 
-### Firebaseの設定
+### Firebase configuration
+Fill ```ApiKeys.js```.
 ```bash
 mv ApiKeys.sample.js ApiKeys.js
 ```
-ApiKeys.jsを埋める。
 
-### 実行
+### Running the Expo CLI server
 ```bash
 $ npm install
 $ npm start
 ```
+The npm start command starts the Expo CLI server.
+Make sure you have Expo-CLI installed. 
 
-## 基本構成要素
+## Overview
 - React Native Expo  
 - Firebase  
 
-詳細なパッケージはpackage.jsonに書かれている。
+Packages we use are written in ```package.json```.
+
